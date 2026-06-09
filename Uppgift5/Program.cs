@@ -3,8 +3,10 @@
     internal class Program
     {
         static void Main(string[] args)
-        { 
+        {
             //Starta genom Manager
+            UI ui=new UI();
+            ui.Start();
         }
     }
 }
