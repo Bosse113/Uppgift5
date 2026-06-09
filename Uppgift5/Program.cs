@@ -1,12 +1,6 @@
-﻿namespace Uppgift5
-{
-    internal class Program
-    {
-        static void Main(string[] args)
-        {
-            //Starta genom Manager
-            UI ui=new UI();
-            ui.Start();
-        }
-    }
-}
+﻿//Starta genom Manager
+using Uppgift5;
+
+Handler handler = new Handler();
+UI ui = new UI(handler);
+ui.Start();

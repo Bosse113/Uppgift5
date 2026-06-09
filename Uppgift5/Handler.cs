@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Diagnostics.Metrics;
-using System.Text;
-
-namespace Uppgift5
+﻿namespace Uppgift5
 {
     internal class Handler
     {
@@ -15,15 +10,35 @@ namespace Uppgift5
         }
         public bool ParkVehicle(Vehicle vehicle)
         {//ToDo:
+            if (garage == null)
+                return false;
 
+            // Kontrollera unikt registreringsnummer
+            foreach (var v in garage)//ToDo: GetEnumerator fixa!!!IENumerable
+            {
+                if (v.RegistrationNumber.Equals(
+                    vehicle.RegistrationNumber,
+                    StringComparison.OrdinalIgnoreCase))
+                {
+                    return false;
+                }
+            }
+
+            return garage.Add(vehicle);
+            return true;//test
         }
         public bool RemoveVehicle(string registrationNumber)
         {//ToDo:
 
+            if (garage == null)
+                return false;
+
+            return garage.Remove(registrationNumber);
+           
         }
         public Vehicle FindVehicle(string registrationNumber)
         {//ToDo:
-
+            return null;//Test
         }
 
     }
