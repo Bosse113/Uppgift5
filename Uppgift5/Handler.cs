@@ -5,11 +5,11 @@
         Garage<Vehicle>? garage;
 
         public void CreateGarage(int capacity)
-        { //ToDo:
+        { //ToDo: CreateGarage
             garage = new Garage<Vehicle>(capacity);
         }
         public bool ParkVehicle(Vehicle vehicle)
-        {//ToDo:
+        {//ToDo:ParkVehicle
             if (garage == null)
                 return false;
 
@@ -28,7 +28,7 @@
             return true;//test
         }
         public bool RemoveVehicle(string registrationNumber)
-        {//ToDo:
+        {//ToDo:RemoveVehicle
 
             if (garage == null)
                 return false;
@@ -37,7 +37,7 @@
            
         }
         public Vehicle FindVehicle(string registrationNumber)
-        {//ToDo:
+        {//ToDo:FindVehicle
             return null;//Test
         }
 
