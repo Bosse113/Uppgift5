@@ -20,7 +20,7 @@ namespace Uppgift5
                 switch (choice)
                 {
                     case "1":
-                        CreateGarage();
+                        AddGarage();
                         break;
 
                     case "2":
@@ -56,7 +56,7 @@ namespace Uppgift5
                         break;
                 }
 
-                Console.WriteLine("\nTryck valfri tangent...");
+                Console.WriteLine($"{Environment.NewLine}Tryck valfri tangent...");
                 Console.ReadKey();
                 Console.Clear();
             }
@@ -92,9 +92,20 @@ namespace Uppgift5
             throw new NotImplementedException();
         }
 
-        private void CreateGarage()
+        private void AddGarage()
         {
-            throw new NotImplementedException();
+            Console.Write("Önskad kapacitet: ");
+
+            if (int.TryParse(Console.ReadLine(), out int capacity))
+            {
+                CreateGarage(capacity);//ToDO: lägg till Create i handler
+                Console.WriteLine("Garage skapat.");
+            }
+            else
+            {
+                Console.WriteLine("Felaktig inmatning.");
+            }
+            
         }
 
         private void ShowMainMenu()
