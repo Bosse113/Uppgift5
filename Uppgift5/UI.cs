@@ -14,9 +14,8 @@
             Console.WriteLine("2. Parkera fordon");
             Console.WriteLine("3. Ta ut fordon");
             Console.WriteLine("4. Lista fordon");
-            Console.WriteLine("5. Hitta fordon");
-            Console.WriteLine("6. Sök fordon");
-            Console.WriteLine("7. Generera fordon i garaget");
+            Console.WriteLine("5. Sök fordon");
+            Console.WriteLine("6. Generera fordon i garaget");
             Console.WriteLine("0. Avsluta");
         }
         public string GetStringInput(string message)

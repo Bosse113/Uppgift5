@@ -5,8 +5,8 @@ using System.Text;
 
 namespace Uppgift5
 {
-    internal class Garage<T> 
-        where T : Vehicle //ToDo tror detta ska vara här
+    internal class Garage<T> : IEnumerable<T> // ToDO:IEnummerable kolla exakt vad det gör
+        where T : Vehicle //ToDo: tror detta ska vara här kolla varför
     {
         private readonly T[] vehicles;
 
@@ -51,20 +51,37 @@ namespace Uppgift5
         }
 
         //Hitta fordon
-        public T FindByRegistrationNumber(string regNr)//ToDo: kan returnera fel/null
+        
+        public T? Find(string registrationNumber)
         {
-            foreach (var vehicle in vehicles)
+            for (int i = 0; i < vehicles.Length; i++)
             {
-                if (vehicle != null &&
-                    vehicle.RegistrationNumber.Equals(
-                        regNr,
+                if (vehicles[i] != null &&
+                    vehicles[i].RegistrationNumber.Equals(
+                        registrationNumber,
                         StringComparison.OrdinalIgnoreCase))
                 {
-                    return vehicle;
+                    Console.WriteLine(vehicles[i]);  
                 }
             }
 
+            return null;
         }
-        
+        public IEnumerator<T> GetEnumerator()
+        {
+            foreach (var vehicle in vehicles)
+            {
+                if (vehicle != null)
+                {
+                    yield return vehicle;
+                }
+            }
+        }
+
+        IEnumerator IEnumerable.GetEnumerator()
+        {
+            return GetEnumerator();
+        }
+
     }
 }

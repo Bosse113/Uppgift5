@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics.Metrics;
 using System.Reflection.Metadata;
 using System.Text;
 
@@ -9,6 +10,7 @@ namespace Uppgift5
     {//Todo: manager och vad den ska göra
         private readonly UI ui;
         private readonly Handler handler;
+       
 
         public Manager()
         {
@@ -44,14 +46,10 @@ namespace Uppgift5
                         break;
 
                     case 5:
-                        FindVehicle();//Todo: FindVehicle
-                        break;
-
-                    case 6:
                         SearchVehicles();//Todo: Search
                         break;
 
-                    case 7:
+                    case 6:
                         GenerateVehicles();//ToDo:Generate
                         break;
 
@@ -204,10 +202,10 @@ namespace Uppgift5
             }
         }
 
-        private void ListVehicles()
+        private void ListVehicles() //Funkar inte???
         {
             IEnumerable<Vehicle> vehicles =
-                handler.GetAllVehicles();//ToDo: GetAllVehicles
+                handler.GetAllVehicles();
 
             foreach (Vehicle vehicle in vehicles)
             {
@@ -215,20 +213,32 @@ namespace Uppgift5
             }
         }
         private void SearchVehicles()
-        {//Todo: Search
-            throw new NotImplementedException();
+        {
+            string regNr =
+                ui.GetStringInput("Registreringsnummer du vill söka efter:");
+            bool success =
+                handler.FindByRegNumber(regNr); //Måste gå via handler !!!!!
+
+            if (success)
+            {
+                ui.ShowMessage("Fordon hittat.");
+                //ui.ShowMessage($"{}");
+            }
+            else
+            {
+                ui.ShowMessage("Fordon hittades inte.");
+            }
+            
         }
+
 
         private void GenerateVehicles()
         {//Todo: GenerateVehicles
-            throw new NotImplementedException();
+            handler.AddVehiclesToGarage();
+           
         }
 
-        private void FindVehicle()
-        {//Todo:Find
-            throw new NotImplementedException();
-        }
-
+        
         
     }
    
