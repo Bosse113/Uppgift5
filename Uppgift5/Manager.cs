@@ -26,7 +26,7 @@ namespace Uppgift5
             {
                 ui.ShowMainMenu();
 
-                int choice = ui.GetIntInput("Välj : ");//ToDo: validerad input metod
+                int choice = ui.GetIntInput("Välj : ");
                 switch (choice)
                 {
                     case 1:
@@ -87,13 +87,13 @@ namespace Uppgift5
             string type = Console.ReadLine();//ToDo: ändra till ui-variant
 
             Console.Write("Registreringsnummer: ");
-            string regNr = Console.ReadLine();
+            string regNr = Console.ReadLine();//ToDo: ändra till ui-variant
 
             Console.Write("Färg: ");
-            string color = Console.ReadLine();
+            string color = Console.ReadLine();//ToDo: ändra till ui-variant
 
             Console.Write("Antal hjul: ");
-            int wheels = int.Parse(Console.ReadLine());
+            int wheels = int.Parse(Console.ReadLine());//ToDo: ändra till ui-variant
 
             Vehicle vehicle = null;
 
@@ -102,7 +102,7 @@ namespace Uppgift5
                 case "1":
 
                     Console.Write("Bränsletyp: ");
-                    string fuel = Console.ReadLine();
+                    string fuel = Console.ReadLine();//ToDo: ändra till ui-variant
 
                     vehicle = new Car(
                         regNr,
@@ -116,7 +116,7 @@ namespace Uppgift5
 
                     Console.Write("Cylindervolym: ");
 
-                    int volume = int.Parse(Console.ReadLine());
+                    int volume = int.Parse(Console.ReadLine());//ToDo: ändra till ui-variant
 
                     vehicle = new Motorcycle(
                         regNr,
@@ -130,7 +130,7 @@ namespace Uppgift5
 
                     Console.Write("Antal motorer: ");
 
-                    int NumOfEngines = int.Parse(Console.ReadLine());
+                    int NumOfEngines = int.Parse(Console.ReadLine());//ToDo: ändra till ui-variant
 
                     vehicle = new Motorcycle(
                         regNr,
@@ -144,8 +144,8 @@ namespace Uppgift5
 
                     Console.Write("Antal sittplatser: ");
 
-                    int numberOfSeats = int.Parse(Console.ReadLine());
-
+                    int numberOfSeats = int.Parse(Console.ReadLine());//ToDo: ändra till ui-variant
+                 
                     vehicle = new Motorcycle(
                         regNr,
                         color,
@@ -158,7 +158,7 @@ namespace Uppgift5
 
                     Console.Write("Längd: ");
 
-                    int length = int.Parse(Console.ReadLine());
+                    int length = int.Parse(Console.ReadLine());//ToDo: ändra till ui-variant
 
                     vehicle = new Motorcycle(
                         regNr,
@@ -202,7 +202,7 @@ namespace Uppgift5
             }
         }
 
-        private void ListVehicles() //Funkar inte???
+        private void ListVehicles() 
         {
             IEnumerable<Vehicle> vehicles =
                 handler.GetAllVehicles();
@@ -216,19 +216,18 @@ namespace Uppgift5
         {
             string regNr =
                 ui.GetStringInput("Registreringsnummer du vill söka efter:");
-            bool success =
-                handler.FindByRegNumber(regNr); //Måste gå via handler !!!!!
+            Vehicle? vehicle = handler.FindVehicle(regNr);
 
-            if (success)
+            if (vehicle == null)
             {
-                ui.ShowMessage("Fordon hittat.");
-                //ui.ShowMessage($"{}");
+                ui.ShowMessage("Fordonet hittades inte.");//ToDo: visas även om vi fått träff
             }
             else
             {
-                ui.ShowMessage("Fordon hittades inte.");
+                ui.ShowMessage(vehicle.ToString());
             }
             
+
         }
 
 

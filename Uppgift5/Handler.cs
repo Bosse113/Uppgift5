@@ -24,19 +24,15 @@
 
             return garage.Remove(regNr);
         }
-        public bool FindByRegNumber(string RegNr)
+        
+        public Vehicle? FindVehicle(string registrationNumber)
         {
             if (garage == null)
-            { return false; }
-            else if (garage.Find(RegNr) != null)
             {
-                return true;
+                return null;
             }
-            else
-            {
-                return false;
-            }
-            //return garage.Find(RegNr);
+
+            return garage.Find(registrationNumber);
         }
 
         public IEnumerable<Vehicle> GetAllVehicles()
@@ -44,15 +40,17 @@
             if (garage == null)
                 return new List<Vehicle>();
 
-            return garage;//ToDo: FIX and code GetAllVehicles
+            return garage;
         }
-        public void AddVehiclesToGarage() 
+        public void AddVehiclesToGarage()
         {
-           Vehicle bil=new Car("CAR123", "Röd", 4, "Bensin");
-           Vehicle mc= new Motorcycle("BIK999", "Svart", 2, 900);
-           Vehicle buss=new Bus("BUS001", "Blå", 6, 55);
-           Vehicle boat=new Boat("SEA123", "Vit", 0, 12);
-           Vehicle plan=new Airplane("AIR777", "Silver", 8, 2);
+            
+           bool bil=garage.Add(new Car("CAR123", "Röd", 4, "Bensin"));
+           bool mc=garage.Add(new Motorcycle("BIK999", "Svart", 2, 900));
+           bool buss=garage.Add(new Bus("BUS001", "Blå", 6, 55));
+           bool boat=garage.Add(new Boat("SEA123", "Vit", 0, 12));
+           bool plan=garage.Add(new Airplane("AIR777", "Silver", 8, 2));
+            
         }
 
     }

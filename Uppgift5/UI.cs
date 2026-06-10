@@ -12,13 +12,13 @@
             Console.WriteLine($"{Environment.NewLine}====== GARAGE ======");
             Console.WriteLine("1. Skapa garage");
             Console.WriteLine("2. Parkera fordon");
-            Console.WriteLine("3. Ta ut fordon");
+            Console.WriteLine("3. Ta ut fordon från garaget");
             Console.WriteLine("4. Lista fordon");
-            Console.WriteLine("5. Sök fordon");
+            Console.WriteLine("5. Sök fordon på registreringsnummer");
             Console.WriteLine("6. Generera fordon i garaget");
             Console.WriteLine("0. Avsluta");
         }
-        public string GetStringInput(string message)
+        public string GetStringInput(string message) //ToDo: ordna validering
         {
             Console.WriteLine(message);
             return Console.ReadLine() ?? "";

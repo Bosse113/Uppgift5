@@ -51,22 +51,22 @@ namespace Uppgift5
         }
 
         //Hitta fordon
-        
         public T? Find(string registrationNumber)
         {
-            for (int i = 0; i < vehicles.Length; i++)
+            foreach (T? vehicle in vehicles)
             {
-                if (vehicles[i] != null &&
-                    vehicles[i].RegistrationNumber.Equals(
+                if (vehicle != null &&
+                    vehicle.RegistrationNumber.Equals(
                         registrationNumber,
                         StringComparison.OrdinalIgnoreCase))
                 {
-                    Console.WriteLine(vehicles[i]);  
+                    return vehicle;
                 }
             }
 
             return null;
         }
+        
         public IEnumerator<T> GetEnumerator()
         {
             foreach (var vehicle in vehicles)
@@ -82,6 +82,7 @@ namespace Uppgift5
         {
             return GetEnumerator();
         }
+        
 
     }
 }
