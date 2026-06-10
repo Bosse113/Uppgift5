@@ -19,8 +19,8 @@ namespace Uppgift5
 
         public override string ToString()
         {
-        //ToDo:fundera på om detta behövs
-            return $"{GetType().Name} | {RegistrationNumber} | {Color} | {NumberOfWheels}";
+        //ToDo:Fixa positioner. TAB var ej bra
+            return $"{GetType().Name} \t| {RegistrationNumber} \t| {Color} \t| {NumberOfWheels}";
         }
     }
 }

@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Diagnostics.Metrics;
+using System.Drawing;
 using System.Reflection.Metadata;
 using System.Text;
 
@@ -46,11 +47,11 @@ namespace Uppgift5
                         break;
 
                     case 5:
-                        SearchVehicles();//Todo: Search
+                        SearchVehicles();
                         break;
 
                     case 6:
-                        GenerateVehicles();//ToDo:Generate
+                        GenerateVehicles();
                         break;
 
                     case 0:
@@ -84,25 +85,18 @@ namespace Uppgift5
             Console.WriteLine("4. Buss");
             Console.WriteLine("5. Båt");
 
-            string type = Console.ReadLine();//ToDo: ändra till ui-variant
+            string type=ui.GetStringInput("Fordonstyp:");
+            string regNr=ui.GetStringInput("Registreringsnummer: ");
+            string color=ui.GetStringInput("Färg: ");
 
-            Console.Write("Registreringsnummer: ");
-            string regNr = Console.ReadLine();//ToDo: ändra till ui-variant
+            int wheels=ui.GetIntInput("Antal hjul: ");
 
-            Console.Write("Färg: ");
-            string color = Console.ReadLine();//ToDo: ändra till ui-variant
-
-            Console.Write("Antal hjul: ");
-            int wheels = int.Parse(Console.ReadLine());//ToDo: ändra till ui-variant
-
-            Vehicle vehicle = null;
+            Vehicle vehicle = null!;
 
             switch (type)
             {
                 case "1":
-
-                    Console.Write("Bränsletyp: ");
-                    string fuel = Console.ReadLine();//ToDo: ändra till ui-variant
+                    string fuel = ui.GetStringInput("Bränsletyp: ");
 
                     vehicle = new Car(
                         regNr,
@@ -113,10 +107,7 @@ namespace Uppgift5
                     break;
 
                 case "2":
-
-                    Console.Write("Cylindervolym: ");
-
-                    int volume = int.Parse(Console.ReadLine());//ToDo: ändra till ui-variant
+                    int volume = ui.GetIntInput("Cylindervolym:");
 
                     vehicle = new Motorcycle(
                         regNr,
@@ -127,10 +118,7 @@ namespace Uppgift5
                     break;
 
                 case "3":
-
-                    Console.Write("Antal motorer: ");
-
-                    int NumOfEngines = int.Parse(Console.ReadLine());//ToDo: ändra till ui-variant
+                    int NumOfEngines = ui.GetIntInput("Antal motorer:");
 
                     vehicle = new Motorcycle(
                         regNr,
@@ -141,10 +129,7 @@ namespace Uppgift5
                     break;
 
                 case "4":
-
-                    Console.Write("Antal sittplatser: ");
-
-                    int numberOfSeats = int.Parse(Console.ReadLine());//ToDo: ändra till ui-variant
+                    int numberOfSeats = ui.GetIntInput("Antal sittplatser:");
                  
                     vehicle = new Motorcycle(
                         regNr,
@@ -155,10 +140,7 @@ namespace Uppgift5
                     break;
 
                 case "5":
-
-                    Console.Write("Längd: ");
-
-                    int length = int.Parse(Console.ReadLine());//ToDo: ändra till ui-variant
+                    int length = ui.GetIntInput("Längd:");
 
                     vehicle = new Motorcycle(
                         regNr,
@@ -206,7 +188,8 @@ namespace Uppgift5
         {
             IEnumerable<Vehicle> vehicles =
                 handler.GetAllVehicles();
-
+            Console.WriteLine($"Typ \t| RegistrationNumber \t| Färg \t| Antal hjul");//ToDo: fixa positioner utan tab.
+        
             foreach (Vehicle vehicle in vehicles)
             {
                 ui.ShowMessage(vehicle.ToString());
@@ -214,13 +197,12 @@ namespace Uppgift5
         }
         private void SearchVehicles()
         {
-            string regNr =
-                ui.GetStringInput("Registreringsnummer du vill söka efter:");
+            string regNr = ui.GetStringInput("Registreringsnummer du vill söka efter:");
             Vehicle? vehicle = handler.FindVehicle(regNr);
 
             if (vehicle == null)
             {
-                ui.ShowMessage("Fordonet hittades inte.");//ToDo: visas även om vi fått träff
+                ui.ShowMessage("Fordonet hittades inte.");
             }
             else
             {
@@ -232,7 +214,7 @@ namespace Uppgift5
 
 
         private void GenerateVehicles()
-        {//Todo: GenerateVehicles
+        {
             handler.AddVehiclesToGarage();
            
         }

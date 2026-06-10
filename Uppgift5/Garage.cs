@@ -32,7 +32,7 @@ namespace Uppgift5
             return false;
         }
         //Ta bort fordon
-        //ToDo : nullcheck
+        
         public bool Remove(string registrationNumber)
         {
             for (int i = 0; i < vehicles.Length; i++)
@@ -42,7 +42,7 @@ namespace Uppgift5
                         registrationNumber,
                         StringComparison.OrdinalIgnoreCase))
                 {
-                    vehicles[i] = null;
+                    vehicles[i] = null!;
                     return true;
                 }
             }

@@ -24,7 +24,7 @@
             return Console.ReadLine() ?? "";
         }
 
-        public int GetIntInput(string message)
+        public int GetIntInput(string message)//ToDo: ordna validering
         {
             Console.WriteLine(message);
 
