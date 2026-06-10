@@ -1,11 +1,237 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Reflection.Metadata;
 using System.Text;
 
 namespace Uppgift5
 {
     internal class Manager
     {//Todo: manager och vad den ska göra
-       
+        private readonly UI ui;
+        private readonly Handler handler;
+
+        public Manager()
+        {
+            handler = new Handler();
+            ui = new UI();
+        }
+
+        public void Run()
+        {
+            bool running = true;
+
+            while (running)
+            {
+                ui.ShowMainMenu();
+
+                int choice = ui.GetIntInput("Välj : ");//ToDo: validerad input metod
+                switch (choice)
+                {
+                    case 1:
+                        CreateGarage();
+                        break;
+
+                    case 2:
+                        AddVehicle();
+                        break;
+
+                    case 3:
+                        RemoveVehicle();
+                        break;
+
+                    case 4:
+                        ListVehicles();
+                        break;
+
+                    case 5:
+                        FindVehicle();//Todo: FindVehicle
+                        break;
+
+                    case 6:
+                        SearchVehicles();//Todo: Search
+                        break;
+
+                    case 7:
+                        GenerateVehicles();//ToDo:Generate
+                        break;
+
+                    case 0:
+                        running = false;
+                        break;
+
+                    default:
+                        Console.WriteLine("Ogiltigt val!");
+                        break;
+                }
+
+            }
+        }
+
+        private void CreateGarage()
+        {
+            int capacity = ui.GetIntInput(
+                "Ange garagekapacitet:");
+
+            handler.CreateGarage(capacity);
+
+            ui.ShowMessage("Garaget skapades.");
+        }
+
+        private void AddVehicle()
+        {
+            //ToDo: NullCheck
+            Console.WriteLine($"{Environment.NewLine}1. Bil");
+            Console.WriteLine("2. Motorcykel");
+            Console.WriteLine("3. Flygplan");
+            Console.WriteLine("4. Buss");
+            Console.WriteLine("5. Båt");
+
+            string type = Console.ReadLine();//ToDo: ändra till ui-variant
+
+            Console.Write("Registreringsnummer: ");
+            string regNr = Console.ReadLine();
+
+            Console.Write("Färg: ");
+            string color = Console.ReadLine();
+
+            Console.Write("Antal hjul: ");
+            int wheels = int.Parse(Console.ReadLine());
+
+            Vehicle vehicle = null;
+
+            switch (type)
+            {
+                case "1":
+
+                    Console.Write("Bränsletyp: ");
+                    string fuel = Console.ReadLine();
+
+                    vehicle = new Car(
+                        regNr,
+                        color,
+                        wheels,
+                        fuel);
+
+                    break;
+
+                case "2":
+
+                    Console.Write("Cylindervolym: ");
+
+                    int volume = int.Parse(Console.ReadLine());
+
+                    vehicle = new Motorcycle(
+                        regNr,
+                        color,
+                        wheels,
+                        volume);
+
+                    break;
+
+                case "3":
+
+                    Console.Write("Antal motorer: ");
+
+                    int NumOfEngines = int.Parse(Console.ReadLine());
+
+                    vehicle = new Motorcycle(
+                        regNr,
+                        color,
+                        wheels,
+                        NumOfEngines);
+
+                    break;
+
+                case "4":
+
+                    Console.Write("Antal sittplatser: ");
+
+                    int numberOfSeats = int.Parse(Console.ReadLine());
+
+                    vehicle = new Motorcycle(
+                        regNr,
+                        color,
+                        wheels,
+                        numberOfSeats);
+
+                    break;
+
+                case "5":
+
+                    Console.Write("Längd: ");
+
+                    int length = int.Parse(Console.ReadLine());
+
+                    vehicle = new Motorcycle(
+                        regNr,
+                        color,
+                        wheels,
+                        length);
+
+                    break;
+            }
+
+            if (vehicle == null)
+            {
+                Console.WriteLine("Ogiltig fordonstyp.");
+                return;
+            }
+
+            bool success = handler.ParkVehicle(vehicle);
+
+            Console.WriteLine(
+                success
+                ? "Fordon parkerat."
+                : "Kunde inte parkera fordonet.");//om success 1 annars 2
+
+        }
+
+        private void RemoveVehicle()
+        {
+            string regNr =
+                ui.GetStringInput("Registreringsnummer:");
+
+            bool success =
+                handler.RemoveVehicle(regNr);
+
+            if (success)
+            {
+                ui.ShowMessage("Fordon borttaget.");
+            }
+            else
+            {
+                ui.ShowMessage("Fordon hittades inte.");
+            }
+        }
+
+        private void ListVehicles()
+        {
+            IEnumerable<Vehicle> vehicles =
+                handler.GetAllVehicles();//ToDo: GetAllVehicles
+
+            foreach (Vehicle vehicle in vehicles)
+            {
+                ui.ShowMessage(vehicle.ToString());
+            }
+        }
+        private void SearchVehicles()
+        {//Todo: Search
+            throw new NotImplementedException();
+        }
+
+        private void GenerateVehicles()
+        {//Todo: GenerateVehicles
+            throw new NotImplementedException();
+        }
+
+        private void FindVehicle()
+        {//Todo:Find
+            throw new NotImplementedException();
+        }
+
+        
     }
+   
+
 }
+
