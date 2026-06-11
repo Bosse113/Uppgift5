@@ -8,7 +8,7 @@ using System.Text;
 namespace Uppgift5
 {
     internal class Manager
-    {//Todo: manager och vad den ska göra
+    {
         private readonly UI ui;
         private readonly Handler handler;
        
@@ -88,7 +88,7 @@ namespace Uppgift5
 
         private void AddVehicle()
         {
-            //ToDo: NullCheck
+           
             Console.WriteLine($"{Environment.NewLine}1. Bil");
             Console.WriteLine("2. Motorcykel");
             Console.WriteLine("3. Flygplan");
@@ -198,7 +198,8 @@ namespace Uppgift5
         {
             IEnumerable<Vehicle> vehicles =
                 handler.GetAllVehicles();
-            Console.WriteLine($"Typ \t| RegistrationNumber \t| Färg \t| Antal hjul");//ToDo: fixa positioner utan tab.
+            
+            Console.WriteLine("Hittade följande:");
         
             foreach (Vehicle vehicle in vehicles)
             {

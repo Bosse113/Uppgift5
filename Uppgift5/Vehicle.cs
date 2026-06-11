@@ -20,7 +20,7 @@ namespace Uppgift5
         public override string ToString()
         {
             //ToDo:Fixa positioner. TAB var ej bra
-            return $"{GetType().Name} \t| {RegistrationNumber} \t| {Color} \t| {NumberOfWheels}";
+            return $"{GetType().Name,10} \t| {RegistrationNumber,6} \t| {Color,10} \t| {NumberOfWheels}";
         }
     }
 }

@@ -5,8 +5,8 @@ using System.Text;
 
 namespace Uppgift5
 {
-    internal class Garage<T> : IEnumerable<T> // ToDO:IEnummerable kolla exakt vad det gör
-, IGarage<T> where T : Vehicle //ToDo: tror detta ska vara här kolla varför
+    internal class Garage<T> : IEnumerable<T> 
+, IGarage<T> where T : Vehicle 
     {
         private readonly T[] vehicles;
 
