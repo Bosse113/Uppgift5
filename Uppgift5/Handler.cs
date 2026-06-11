@@ -1,6 +1,6 @@
 ﻿namespace Uppgift5
 {
-    internal class Handler
+    internal class Handler : IHandler
     {
         private Garage<Vehicle>? garage;
 
@@ -24,7 +24,7 @@
 
             return garage.Remove(regNr);
         }
-        
+
         public Vehicle? FindVehicle(string registrationNumber)
         {
             if (garage == null)
@@ -44,13 +44,13 @@
         }
         public void AddVehiclesToGarage()
         {
-            
-           bool bil=garage.Add(new Car("CAR123", "Röd", 4, "Bensin"));
-           bool mc=garage.Add(new Motorcycle("BIK999", "Svart", 2, 900));
-           bool buss=garage.Add(new Bus("BUS001", "Blå", 6, 55));
-           bool boat=garage.Add(new Boat("SEA123", "Vit", 0, 12));
-           bool plan=garage.Add(new Airplane("AIR777", "Silver", 8, 2));
-            
+
+            bool bil = garage.Add(new Car("CAR123", "Röd", 4, "Bensin"));
+            bool mc = garage.Add(new Motorcycle("BIK999", "Svart", 2, 900));
+            bool buss = garage.Add(new Bus("BUS001", "Blå", 6, 55));
+            bool boat = garage.Add(new Boat("SEA123", "Vit", 0, 12));
+            bool plan = garage.Add(new Airplane("AIR777", "Silver", 8, 2));
+
         }
         public IEnumerable<Vehicle> SearchVehicles(
         string? type,
@@ -109,20 +109,21 @@
             {
                 Console.WriteLine("Garaget är tomt."); ;
             }
-            else { 
-            var statistics =
-            garage.GroupBy(v => v.GetType().Name)
-          .Select(g => new
-          {
-              Type = g.Key,
-              Count = g.Count()
-          });
-
-            foreach (var item in statistics)
+            else
             {
-                Console.WriteLine($"{item.Type}: {item.Count}");
+                var statistics =
+                garage.GroupBy(v => v.GetType().Name)
+              .Select(g => new
+              {
+                  Type = g.Key,
+                  Count = g.Count()
+              });
+
+                foreach (var item in statistics)
+                {
+                    Console.WriteLine($"{item.Type}: {item.Count}");
+                }
             }
-        }
         }
 
     }

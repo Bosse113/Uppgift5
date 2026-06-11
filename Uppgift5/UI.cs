@@ -1,11 +1,11 @@
 ﻿namespace Uppgift5
 {
-    internal class UI
+    internal class UI : IUI
     {
-        
-        
 
-        
+
+
+
 
         public void ShowMainMenu()
         {
@@ -16,7 +16,7 @@
             Console.WriteLine("4. Lista fordon");
             Console.WriteLine("5. Sök fordon på registreringsnummer");
             Console.WriteLine("6. Sök efter fordon");
-            Console.WriteLine("7. Visa antal efter fordonstyp"); 
+            Console.WriteLine("7. Visa antal efter fordonstyp");
             Console.WriteLine("9. Generera fordon i garaget");
             Console.WriteLine("0. Avsluta");
         }
@@ -39,7 +39,9 @@
 
             return value;
         }
+        
 
+        
         public void ShowMessage(string message)
         {
             Console.WriteLine(message);

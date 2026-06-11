@@ -6,7 +6,7 @@ using System.Text;
 namespace Uppgift5
 {
     internal class Garage<T> : IEnumerable<T> // ToDO:IEnummerable kolla exakt vad det gör
-        where T : Vehicle //ToDo: tror detta ska vara här kolla varför
+, IGarage<T> where T : Vehicle //ToDo: tror detta ska vara här kolla varför
     {
         private readonly T[] vehicles;
 
@@ -32,7 +32,7 @@ namespace Uppgift5
             return false;
         }
         //Ta bort fordon
-        
+
         public bool Remove(string registrationNumber)
         {
             for (int i = 0; i < vehicles.Length; i++)
@@ -66,7 +66,7 @@ namespace Uppgift5
 
             return null;
         }
-        
+
         public IEnumerator<T> GetEnumerator()
         {
             foreach (var vehicle in vehicles)
@@ -82,7 +82,7 @@ namespace Uppgift5
         {
             return GetEnumerator();
         }
-        
+
 
     }
 }

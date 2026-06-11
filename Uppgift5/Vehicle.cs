@@ -4,13 +4,13 @@ using System.Text;
 
 namespace Uppgift5
 {
-    internal class Vehicle
+    internal class Vehicle : IVehicle
     {
         public string RegistrationNumber { get; set; }
         public string Color { get; set; }
         public int NumberOfWheels { get; set; }
 
-        public Vehicle(string registrationNumber,string color,int numberOfWheels)
+        public Vehicle(string registrationNumber, string color, int numberOfWheels)
         {
             RegistrationNumber = registrationNumber;
             Color = color;
@@ -19,7 +19,7 @@ namespace Uppgift5
 
         public override string ToString()
         {
-        //ToDo:Fixa positioner. TAB var ej bra
+            //ToDo:Fixa positioner. TAB var ej bra
             return $"{GetType().Name} \t| {RegistrationNumber} \t| {Color} \t| {NumberOfWheels}";
         }
     }
