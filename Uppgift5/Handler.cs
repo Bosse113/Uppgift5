@@ -52,6 +52,78 @@
            bool plan=garage.Add(new Airplane("AIR777", "Silver", 8, 2));
             
         }
+        public IEnumerable<Vehicle> SearchVehicles(
+        string? type,
+        string? color,
+        int? numberOfWheels)
+        {
+            List<Vehicle> result = new();
+
+            if (garage == null)
+            {
+                return result;
+            }
+
+            foreach (Vehicle vehicle in garage)
+            {
+                bool matches = true;
+                if (!string.IsNullOrWhiteSpace(type))
+                {
+                    if (!vehicle.GetType().Name.Equals(
+                        type,
+                        StringComparison.OrdinalIgnoreCase))
+                    {
+                        matches = false;
+                    }
+                }
+
+                if (!string.IsNullOrWhiteSpace(color))
+                {
+                    if (!vehicle.Color.Equals(
+                        color,
+                        StringComparison.OrdinalIgnoreCase))
+                    {
+                        matches = false;
+                    }
+                }
+
+                if (numberOfWheels.HasValue)
+                {
+                    if (vehicle.NumberOfWheels != numberOfWheels.Value)
+                    {
+                        matches = false;
+                    }
+                }
+
+                if (matches)
+                {
+                    result.Add(vehicle);
+                }
+            }
+
+            return result;
+        }
+        public void ListTypesCount()
+        {
+            if (garage == null)
+            {
+                Console.WriteLine("Garaget är tomt."); ;
+            }
+            else { 
+            var statistics =
+            garage.GroupBy(v => v.GetType().Name)
+          .Select(g => new
+          {
+              Type = g.Key,
+              Count = g.Count()
+          });
+
+            foreach (var item in statistics)
+            {
+                Console.WriteLine($"{item.Type}: {item.Count}");
+            }
+        }
+        }
 
     }
 }

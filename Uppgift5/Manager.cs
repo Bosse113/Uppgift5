@@ -47,10 +47,15 @@ namespace Uppgift5
                         break;
 
                     case 5:
+                        SearchVehiclesByNumberPlate();
+                        break;
+                    case 6:
                         SearchVehicles();
                         break;
-
-                    case 6:
+                    case 7:
+                        ListTypes();
+                        break;
+                    case 9:
                         GenerateVehicles();
                         break;
 
@@ -64,6 +69,11 @@ namespace Uppgift5
                 }
 
             }
+        }
+
+        private void ListTypes()
+        {
+            handler.ListTypesCount(); 
         }
 
         private void CreateGarage()
@@ -195,7 +205,7 @@ namespace Uppgift5
                 ui.ShowMessage(vehicle.ToString());
             }
         }
-        private void SearchVehicles()
+        private void SearchVehiclesByNumberPlate()
         {
             string regNr = ui.GetStringInput("Registreringsnummer du vill söka efter:");
             Vehicle? vehicle = handler.FindVehicle(regNr);
@@ -219,8 +229,40 @@ namespace Uppgift5
            
         }
 
-        
-        
+        private void SearchVehicles()
+        {
+            string color =
+                ui.GetStringInput(
+                    "Färg (tomt = alla):");
+
+            string wheelInput =
+                ui.GetStringInput(
+                    "Antal hjul (tomt = alla):");
+            Console.WriteLine("Fordonstyper: Car,Motorcycle,Boat,Bus,Airplane.");
+            string typeInput =
+               ui.GetStringInput(
+                   "Fordonstyp (tomt = alla):");
+
+            int? wheels = null;
+
+            if (!string.IsNullOrWhiteSpace(wheelInput))
+            {
+                wheels = int.Parse(wheelInput);//gör om input till Int.
+            }
+
+            IEnumerable<Vehicle> result =
+                handler.SearchVehicles(
+                    typeInput,
+                    color,
+                    wheels);
+
+            foreach (Vehicle vehicle in result)
+            {
+                ui.ShowMessage(vehicle.ToString());
+            }
+        }
+
+
     }
    
 
