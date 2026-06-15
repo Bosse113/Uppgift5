@@ -95,6 +95,7 @@ namespace Uppgift5
             Console.WriteLine("4. Buss");
             Console.WriteLine("5. Båt");
 
+            ui.ShowMessage("Skriv in efter kolon.");
             string type=ui.GetVerifiedStringInput("Fordonstyp:");
             string regNr=ui.GetVerifiedStringInput("Registreringsnummer: ");
             string color=ui.GetVerifiedStringInput("Färg: ");
@@ -178,6 +179,7 @@ namespace Uppgift5
 
         private void RemoveVehicle()
         {
+            ui.ShowMessage("Skriv in registrerings nummer för fordon som ska tas bort ur garaget.");
             string regNr =
                 ui.GetVerifiedStringInput("Registreringsnummer:");
 

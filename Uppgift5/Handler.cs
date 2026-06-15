@@ -45,7 +45,7 @@
         public void AddVehiclesToGarage()
         {
 
-            bool bil = garage.Add(new Car("CAR123", "Röd", 4, "Bensin"));
+            bool bil = garage!.Add(new Car("CAR123", "Röd", 4, "Bensin"));
             bool mc = garage.Add(new Motorcycle("BIK999", "Svart", 2, 900));
             bool buss = garage.Add(new Bus("BUS001", "Blå", 6, 55));
             bool boat = garage.Add(new Boat("SEA123", "Vit", 0, 12));
