@@ -4,7 +4,7 @@ using System.Text;
 
 namespace Uppgift5
 {
-    public class Vehicle : IVehicle
+    internal class Vehicle : IVehicle
     {
         public string RegistrationNumber { get; set; }
         public string Color { get; set; }

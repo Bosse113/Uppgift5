@@ -5,7 +5,7 @@ using System.Text;
 
 namespace Uppgift5
 {
-    public class Garage<T> : IEnumerable<T> 
+    internal class Garage<T> : IEnumerable<T> 
 , IGarage<T> where T : Vehicle 
     {
         private readonly T[] vehicles;
