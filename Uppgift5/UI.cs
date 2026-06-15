@@ -46,5 +46,46 @@
         {
             Console.WriteLine(message);
         }
+
+        public int GetVerifiedIntInput(string message)
+        {
+            int value;
+
+            do
+            {
+                Console.WriteLine(message);
+
+                if (int.TryParse(Console.ReadLine(), out value)
+                    && value > 0)
+                {
+                    return value;
+                }
+
+                Console.WriteLine(
+                    "Ange ett positivt tal större än 0.");
+
+            } while (true);
+        }
+        public string GetVerifiedStringInput(string message)
+        {
+            string? input;
+
+            do
+            {
+                Console.WriteLine(message);
+
+                input = Console.ReadLine();
+
+                if (!string.IsNullOrWhiteSpace(input))
+                {
+                    return input.Trim();
+                }
+
+                Console.WriteLine(
+                    "Fältet får inte vara tomt.");
+
+            } while (true);
+        }
+        
     }
 }

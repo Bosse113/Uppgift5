@@ -95,18 +95,18 @@ namespace Uppgift5
             Console.WriteLine("4. Buss");
             Console.WriteLine("5. Båt");
 
-            string type=ui.GetStringInput("Fordonstyp:");
-            string regNr=ui.GetStringInput("Registreringsnummer: ");
-            string color=ui.GetStringInput("Färg: ");
+            string type=ui.GetVerifiedStringInput("Fordonstyp:");
+            string regNr=ui.GetVerifiedStringInput("Registreringsnummer: ");
+            string color=ui.GetVerifiedStringInput("Färg: ");
 
-            int wheels=ui.GetIntInput("Antal hjul: ");
+            int wheels=ui.GetVerifiedIntInput("Antal hjul: ");
 
             Vehicle vehicle = null!;
 
             switch (type)
             {
                 case "1":
-                    string fuel = ui.GetStringInput("Bränsletyp: ");
+                    string fuel = ui.GetVerifiedStringInput("Bränsletyp: ");
 
                     vehicle = new Car(
                         regNr,
@@ -117,7 +117,7 @@ namespace Uppgift5
                     break;
 
                 case "2":
-                    int volume = ui.GetIntInput("Cylindervolym:");
+                    int volume = ui.GetVerifiedIntInput("Cylindervolym:");
 
                     vehicle = new Motorcycle(
                         regNr,
@@ -128,7 +128,7 @@ namespace Uppgift5
                     break;
 
                 case "3":
-                    int NumOfEngines = ui.GetIntInput("Antal motorer:");
+                    int NumOfEngines = ui.GetVerifiedIntInput("Antal motorer:");
 
                     vehicle = new Motorcycle(
                         regNr,
@@ -139,7 +139,7 @@ namespace Uppgift5
                     break;
 
                 case "4":
-                    int numberOfSeats = ui.GetIntInput("Antal sittplatser:");
+                    int numberOfSeats = ui.GetVerifiedIntInput("Antal sittplatser:");
                  
                     vehicle = new Motorcycle(
                         regNr,
@@ -150,7 +150,7 @@ namespace Uppgift5
                     break;
 
                 case "5":
-                    int length = ui.GetIntInput("Längd:");
+                    int length = ui.GetVerifiedIntInput("Längd:");
 
                     vehicle = new Motorcycle(
                         regNr,
@@ -179,7 +179,7 @@ namespace Uppgift5
         private void RemoveVehicle()
         {
             string regNr =
-                ui.GetStringInput("Registreringsnummer:");
+                ui.GetVerifiedStringInput("Registreringsnummer:");
 
             bool success =
                 handler.RemoveVehicle(regNr);
@@ -208,7 +208,7 @@ namespace Uppgift5
         }
         private void SearchVehiclesByNumberPlate()
         {
-            string regNr = ui.GetStringInput("Registreringsnummer du vill söka efter:");
+            string regNr = ui.GetVerifiedStringInput("Registreringsnummer du vill söka efter:");
             Vehicle? vehicle = handler.FindVehicle(regNr);
 
             if (vehicle == null)
@@ -217,6 +217,7 @@ namespace Uppgift5
             }
             else
             {
+                ui.ShowMessage("Hittade följande:");
                 ui.ShowMessage(vehicle.ToString());
             }
             
@@ -230,7 +231,7 @@ namespace Uppgift5
            
         }
 
-        private void SearchVehicles()
+        private void SearchVehicles()//ska inte använda verified-metoderna p.g.a. tomt är ok
         {
             string color =
                 ui.GetStringInput(
