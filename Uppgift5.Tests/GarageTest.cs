@@ -25,7 +25,7 @@ namespace Uppgift5.Tests
                     "ABC123",
                     "Red",
                     4,
-                    "Gasoline");
+                    "Bensin");
 
             // Act
             bool result = garage.Add(car);
@@ -47,7 +47,7 @@ namespace Uppgift5.Tests
                     "ABC123",
                     "Red",
                     4,
-                    "Gasoline"));
+                    "Bensin"));
 
             // Act
             bool result =
@@ -75,7 +75,7 @@ namespace Uppgift5.Tests
                     "ABC123",
                     "Red",
                     4,
-                    "Gasoline"));
+                    "Bensin"));
 
             // Act
             Vehicle? result =
@@ -98,7 +98,7 @@ namespace Uppgift5.Tests
                     "ABC123",
                     "Red",
                     4,
-                    "Gasoline"));
+                    "Bensin"));
 
             // Act
             bool result =
