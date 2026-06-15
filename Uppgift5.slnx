@@ -1,4 +1,4 @@
 <Solution>
+  <Project Path="Uppgift5.Tests/Uppgift5.Tests.csproj" Id="9acf6dab-7eea-499b-aac1-d356506bdb75" />
   <Project Path="Uppgift5/Uppgift5.csproj" />
-  <Project Path="Uppgift5Tests/Uppgift5Tests.csproj" Id="f9aea48f-98ff-4e98-b51b-212157879be7" />
 </Solution>
