@@ -17,5 +17,10 @@ namespace Uppgift5
         {
             FuelType = fuelType;
         }
+        public override string ToString()
+        {
+
+            return $"{GetType().Name,10} \t| {RegistrationNumber,6} \t| {Color,10} \t| {NumberOfWheels} \t| {FuelType} som drivmedel";
+        }
     }
 }

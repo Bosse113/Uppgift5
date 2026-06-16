@@ -55,10 +55,15 @@ namespace Uppgift5
                     case 7:
                         ListTypes();
                         break;
+                    case 8:
+                        SaveGarage();
+                        break;
                     case 9:
+                        LoadGarage();
+                        break;
+                    case 20:
                         GenerateVehicles();
                         break;
-
                     case 0:
                         running = false;
                         break;
@@ -70,6 +75,8 @@ namespace Uppgift5
 
             }
         }
+
+        
 
         private void ListTypes()
         {
@@ -265,8 +272,28 @@ namespace Uppgift5
                 ui.ShowMessage(vehicle.ToString());
             }
         }
+        private void SaveGarage()
+        {
+            string fileName =
+                ui.GetStringInput(
+                    "Filnamn:");
 
+            handler.SaveGarage(fileName);
 
+            ui.ShowMessage(
+                "Garaget sparades.");
+        }
+        private void LoadGarage()
+        {
+            string fileName =
+                ui.GetStringInput(
+                    "Filnamn:");
+
+            handler.LoadGarage(fileName);
+
+            ui.ShowMessage(
+                "Garaget laddades.");
+        }
     }
    
 

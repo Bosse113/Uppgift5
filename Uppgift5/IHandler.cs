@@ -10,5 +10,7 @@
         bool ParkVehicle(Vehicle vehicle);
         bool RemoveVehicle(string regNr);
         IEnumerable<Vehicle> SearchVehicles(string? type, string? color, int? numberOfWheels);
+        void SaveGarage(string fileName);
+        void LoadGarage(string fileName);
     }
 }

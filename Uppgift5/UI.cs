@@ -17,7 +17,9 @@
             Console.WriteLine("5. Sök fordon på registreringsnummer");
             Console.WriteLine("6. Sök efter fordon");
             Console.WriteLine("7. Visa antal efter fordonstyp");
-            Console.WriteLine("9. Generera fordon i garaget");
+            Console.WriteLine("8. Spara garaget");
+            Console.WriteLine("9. Ladda garaget");
+            Console.WriteLine("20. Generera fordon i garaget");
             Console.WriteLine("0. Avsluta");
         }
         public string GetStringInput(string message) //ToDo: ordna validering
