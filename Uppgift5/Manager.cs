@@ -274,9 +274,8 @@ namespace Uppgift5
         }
         private void SaveGarage()
         {
-            string fileName =
-                ui.GetStringInput(
-                    "Filnamn:");
+            string fileName = "spara.txt";
+                //ui.GetStringInput("Filnamn:");
 
             handler.SaveGarage(fileName);
 
@@ -285,9 +284,8 @@ namespace Uppgift5
         }
         private void LoadGarage()
         {
-            string fileName =
-                ui.GetStringInput(
-                    "Filnamn:");
+            string fileName = "spara.txt";
+                //ui.GetStringInput"Filnamn:");
 
             handler.LoadGarage(fileName);
 

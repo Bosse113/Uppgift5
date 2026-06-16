@@ -166,27 +166,7 @@ namespace Uppgift5
                 }
             }
         }
-        //Ändra för att få med unika egenskapen NYTT se ovan
-        //public void SaveGarage(string fileName)
-        //{
-        //    if (garage == null)
-        //    {
-        //        return;
-        //    }
-
-        //    using StreamWriter writer =
-        //        new StreamWriter(fileName);
-
-        //    foreach (Vehicle vehicle in garage)
-        //    {
-        //        writer.WriteLine(
-        //            $"{vehicle.GetType().Name};" +
-        //            $"{vehicle.RegistrationNumber};" +
-        //            $"{vehicle.Color};" +
-        //            $"{vehicle.NumberOfWheels}");
-
-        //    }
-        //}
+        
         public void LoadGarage(string fileName)
         {
             if (!File.Exists(fileName))
@@ -200,7 +180,7 @@ namespace Uppgift5
 
             foreach (string line in lines)
             {
-                string[] parts = line.Split(';');
+                string[] parts = line.Split(';');//delar varje inputrad efter ; 
 
                 if (parts.Length < 4)
                 {
