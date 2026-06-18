@@ -121,6 +121,31 @@ namespace Uppgift5.Tests
             // Assert
             Assert.Null(result);
         }
+        [Fact]
+        public void Add_DuplicateRegistrationNumber_ReturnsFalse()
+        {
+            // Arrange
+            var garage = new Garage<Vehicle>(5);
+
+            garage.Add(
+                new Car(
+                    "ABC123",
+                    "Red",
+                    4,
+                    "Gasoline"));
+
+            // Act
+            bool result =
+                garage.Add(
+                    new Car(
+                        "abc123",
+                        "Blue",
+                        4,
+                        "Diesel"));
+
+            // Assert
+            Assert.False(result);
+        }
     }
 }
 

@@ -3,7 +3,7 @@ using Uppgift5;
 
 
 //ToDo: kolla om fordon redan finns
-//ToDo: kolla om garage är fullt
+//ToDo: text på utskrift Typ: m.m. 
 Manager manager = new Manager();
 
 manager.Run();

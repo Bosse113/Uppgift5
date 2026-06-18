@@ -17,20 +17,54 @@ namespace Uppgift5
             Capacity = capacity;
             vehicles = new T[capacity];
         }
-        //Lägg till fordon
+        public int Count { get; private set; }
+        public bool IsFull => Count >= Capacity;
+        //Lägg till fordon //Kompletterat med koll av regnummer och om garage=fullt. Tillagt efter deadline. Blev påmind av dokumentet för genomgången
         public bool Add(T vehicle)
         {
+            if (IsFull)
+            {
+                return false;
+            }
+
+            foreach (T? existingVehicle in vehicles)
+            {
+                if (existingVehicle != null)//kolla om regnummer redan finns i garaget
+                {
+                    if (existingVehicle.RegistrationNumber.Equals(
+                        vehicle.RegistrationNumber,
+                        StringComparison.OrdinalIgnoreCase))
+                    {
+                        return false;
+                    }
+                }
+            }
+
             for (int i = 0; i < vehicles.Length; i++)
             {
                 if (vehicles[i] == null)
                 {
                     vehicles[i] = vehicle;
+                    Count++;
                     return true;
                 }
             }
 
             return false;
         }
+        //public bool Add(T vehicle)
+        //{
+        //    for (int i = 0; i < vehicles.Length; i++)
+        //    {
+        //        if (vehicles[i] == null)
+        //        {
+        //            vehicles[i] = vehicle;
+        //            return true;
+        //        }
+        //    }
+
+        //    return false;
+        //}
         //Ta bort fordon
 
         public bool Remove(string registrationNumber)

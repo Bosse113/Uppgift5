@@ -15,10 +15,26 @@ namespace Uppgift5
         public bool ParkVehicle(Vehicle vehicle)
         {
             if (garage == null)
+            {
+                Console.WriteLine("Inget garage är skapat.");
                 return false;
+            }
+
+            if (garage.IsFull)
+            {
+                Console.WriteLine("Garaget är fullt.");
+                return false;
+            }
 
             return garage.Add(vehicle);
         }
+        //public bool ParkVehicle(Vehicle vehicle)
+        //{
+        //    if (garage == null)
+        //        return false;
+
+        //    return garage.Add(vehicle);
+        //}
 
         public bool RemoveVehicle(string regNr)
         {
@@ -40,10 +56,11 @@ namespace Uppgift5
 
         public IEnumerable<Vehicle> GetAllVehicles()
         {
-            if (garage == null)
-                return new List<Vehicle>();
+            //if (garage == null)
+            //    return new List<Vehicle>();
 
-            return garage;
+            //return garage;
+            return garage!.ToList();
         }
         public void AddVehiclesToGarage()
         {
